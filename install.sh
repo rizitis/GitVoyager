@@ -23,7 +23,7 @@ else
 fi
 
 # Create directory for GitVoyager in /opt and copy necessary files
-if mkdir -p /opt/GitVoyager && cp "$CWD"/{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh} /opt/GitVoyager/; then
+if mkdir -p /usr/local/bin/GitVoyager && cp "$CWD"/{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh} /opt/GitVoyager/; then
     echo "GitVoyager files copied to /opt/GitVoyager."
 else
     echo "Error: Failed to copy GitVoyager files."
@@ -31,7 +31,7 @@ else
 fi
 
 # Set permissions for all files in the GitVoyager directory
-if chmod 777 /opt/GitVoyager/*; then
+if chmod 777 /usr/local/bin/GitVoyager/*; then
     echo "Permissions set for GitVoyager files."
 else
     echo "Error: Failed to set file permissions."
