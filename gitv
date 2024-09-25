@@ -1,0 +1,113 @@
+#!/bin/bash
+
+cd $(dirname $0) || exit
+CWD=$(pwd)
+set -e
+
+cat << 'EOF'
+
+   _____ _ ___      __
+  / ____(_) \ \    / /
+ | |  __ _| |\ \  / /__  _   _  __ _  __ _  ___ _ __
+ | | |_ | | __\ \/ / _ \| | | |/ _` |/ _` |/ _ \ '__|
+ | |__| | | |_ \  / (_) | |_| | (_| | (_| |  __/ |
+  \_____|_|\__| \/ \___/ \__, |\__,_|\__, |\___|_|
+                          __/ |       __/ |
+                         |___/       |___/
+
+EOF
+
+RED='\033[0;31m'
+    GREEN='\033[0;32m'
+    YELLOW='\033[0;33m'
+    BLUE='\033[0;34m'
+    NC='\033[0m'
+
+. /etc/gitv.conf
+
+if [ "$EUID" -eq 0 ]; then
+    echo -e "${RED}GitVoyager refuse to connect in web world with root privileges.${NC} Exiting."
+    exit 1
+fi
+
+fetch () {
+bash fetch-voyager.sh
+}
+
+get () {
+local pkg="$1"
+mkdir -p "$LOC_DIR"
+cp repo_contents.json "$LOC_DIR"
+cd "$LOC_DIR" || exit 1
+bash $CWD/get-voyager.sh "$pkg"
+wait
+rm repo_contents.json
+ls -l
+}
+
+search () {
+local pkg="$1"
+jq -r . repo_contents.json | grep "$pkg"
+}
+
+list () {
+jq '.' repo_contents.json | less
+}
+
+uninstall () {
+sudo bash uninstall-gitv.sh
+}
+
+help() {
+
+    echo -e ""
+    echo -e "${BLUE} The gitv command lets you download any file or folder from github.${NC}"
+    echo -e "${BLUE} First you must have a valid github personal access token.${NC}"
+    echo -e "${BLUE} Then edit /etc/gitv.conf and add you token.${NC}"
+    echo -e "${BLUE} In gitv.conf also add github project name etc, as and the local dir path for download files.${NC}"
+    echo ""
+    echo -e "${GREEN}Usage: gitv <command> [<file>]${NC}"
+    echo -e "${YELLOW}Commands:${NC}"
+    echo -e "  ${YELLOW}get <file_name>${NC}  - Download from github file_name to LOC_DIR."
+    echo -e "  ${YELLOW}search <file_name>${NC}   - Search if file exist in remote and print info."
+    echo -e "  ${YELLOW}list${NC}               - Print all contents of remote in a json file format."
+    echo -e "  ${YELLOW}fetch${NC}               - This command create the first database and also update database if exist"
+    echo ""
+    echo -e "  ${BLUE}help${NC}               - Display this help message"
+    echo -e "  ${RED}uninstall          - Uninstall gitv and delete all file but not LOC_DIR"
+    echo ""
+    echo ""
+}
+
+main() {
+    if [ $# -eq 0 ]; then
+        help
+        exit 1
+    fi
+
+    local command="$1"
+    local pkg="$2"
+
+    case "$command" in
+        get|search)
+            if [ -z "$pkg" ]; then
+                echo "OPS...ERROR: $command command requires <file_name> argument."
+                echo ""
+                help
+                exit 1
+            fi
+            ;;
+    esac
+
+    case "$command" in
+        get) get "$pkg" ;;
+        search) search "$pkg" ;;
+        list) list ;;
+        fetch) fetch ;;
+        uninstall) uninstall ;;
+        help) help ;;
+        *) echo "Unknown command: $command"; help ;;
+    esac
+}
+
+main "$@"
