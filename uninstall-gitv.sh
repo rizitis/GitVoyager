@@ -13,7 +13,7 @@ set -e
 
 # Perform uninstallation
 rm /etc/gitv.conf
-rm -fr /opt/GitVoyager
+rm -fr /usr/local/bin/GitVoyager
 
 # Display uninstallation completion message
 echo "GitVoyager has been successfully uninstalled."
