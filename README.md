@@ -9,6 +9,8 @@ Only requirement in a Linux system is jq and and a personal github api access to
 1. Create (if you dont have) a [github token.](https://github.com/settings/tokens)<br>
 Paste your token in plain.txt file and place file in a safe hiden dir of your system. Assume: /home/user/.config/github_token.txt<br>
 2. GitVoyager has a conf file stored in   `/etc/gitv.conf`
+After installation finish you must edit gitv.conf.<br>
+
 ```
 #*************************************#
 # Add here the path of your github_token.txt
@@ -34,7 +36,6 @@ BRANCH=
 # Example: LOC_DIR="$HOME"/GitV_WORK
 LOC_DIR=
 ```
-After installation finish you must edit gitv.conf.<br>
 
 3. Next step is command `gitv fetch`<br>
 This will create the first database of your repo loacaly so gitv will know where to search for files remote.
