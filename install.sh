@@ -22,9 +22,9 @@ else
     exit 1
 fi
 
-# Create directory for GitVoyager in /opt and copy necessary files
-if mkdir -p /usr/local/bin/GitVoyager && cp "$CWD"/{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh} /opt/GitVoyager/; then
-    echo "GitVoyager files copied to /opt/GitVoyager."
+# Create directory for GitVoyager in /usr/local/bin/ and copy necessary files
+if mkdir -p /usr/local/bin/GitVoyager && cp "$CWD"/{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh} /usr/local/bin/GitVoyager/; then
+    echo "GitVoyager files copied to /usr/local/bin/GitVoyager."
 else
     echo "Error: Failed to copy GitVoyager files."
     exit 1
