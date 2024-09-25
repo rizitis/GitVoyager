@@ -63,7 +63,7 @@ help() {
     echo -e ""
     echo -e "${BLUE} The gitv command lets you download any file or folder from github.${NC}"
     echo -e "${BLUE} First you must have a valid github personal access token.${NC}"
-    echo -e "${BLUE} Then edit /etc/gitv.conf and add you token.${NC}"
+    echo -e "${BLUE} Then edit "$HOME/GitVoyager/gitv.conf" and add you token.${NC}"
     echo -e "${BLUE} In gitv.conf also add github project name etc, as and the local dir path for download files.${NC}"
     echo ""
     echo -e "${GREEN}Usage: gitv <command> [<file>]${NC}"

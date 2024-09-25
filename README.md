@@ -3,12 +3,12 @@ Is your personal git package manager. Explore your repo in github, and download 
 Only requirement in a Linux system is jq and and a personal github api access token.<br>
 
 ## Install
-`sudo ./install.sh`
+`./install.sh` (no sudo , no root)
 
 ## SetUp
 1. Create (if you dont have) a [github token.](https://github.com/settings/tokens)<br>
 Paste your token in plain.txt file and place file in a safe hiden dir of your system. Assume: `/home/user/.config/github_token.txt`<br>
-2. GitVoyager has a conf file stored in   `/etc/gitv.conf`
+2. GitVoyager has a conf file stored in   `"$HOME/GitVoyager/gitv.conf"`
 After installation finish you must edit `gitv.conf`.<br>
 
 ```
@@ -56,7 +56,7 @@ _____ _ ___      __
 
 The gitv command lets you download any file or folder from github.
 First you must have a valid github personal access token.
-Then edit /etc/gitv.conf and add you token.
+Then edit "$HOME/GitVoyager/gitv.conf" and add you token.
 In gitv.conf also add github project name etc, as and the local dir path for download files.
 
 Usage: gitv <command> [<file>]

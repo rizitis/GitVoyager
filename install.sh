@@ -4,18 +4,18 @@
 cd $(dirname $0) || exit
 CWD=$(pwd)
 
-# Check if running as root
-if [ "$EUID" -ne 0 ]; then
-    echo "Error: Permission Denied"
-    echo "This operation requires root privileges. Please run this script as root."
+if [ "$EUID" -eq 0 ]; then
+    echo -e "${RED}GitVoyager should do not installed as root${NC}"
+    echo -e "Exiting..."
     exit 1
 fi
 
 # Exit on error
 set -e
-
+INST_DIR="$HOME/GitVoyager/"
+mkdir -p "$INST_DIR"
 # Copy configuration file to /etc
-if cp "$CWD/gitv.conf" /etc/; then
+if cp "$CWD/gitv.conf" "$INST_DIR"; then
     echo "Configuration file copied to /etc."
 else
     echo "Error: Failed to copy configuration file."
@@ -23,15 +23,15 @@ else
 fi
 
 # Create directory for GitVoyager in /usr/local/bin/ and copy necessary files
-if mkdir -p /usr/local/bin/ && cp "$CWD"/{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh} /usr/local/bin/; then
-    echo "GitVoyager files copied to /usr/local/bin/"
+if mkdir -p ""$INST_DIR"" && cp "$CWD"/{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh} ""$INST_DIR""; then
+    echo "GitVoyager files copied to "$INST_DIR""
 else
     echo "Error: Failed to copy GitVoyager files."
     exit 1
 fi
 
 # Set permissions for all files in the GitVoyager directory
-if chmod 777 /usr/local/bin/{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh}; then
+if chmod 777 ""$INST_DIR""{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh}; then
     echo "Permissions set for GitVoyager files."
 else
     echo "Error: Failed to set file permissions."

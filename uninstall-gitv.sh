@@ -1,19 +1,17 @@
 ##!/bin/bash
 
-# Check if running as root
-if [ "$EUID" -ne 0 ]; then
-    echo "Error: Permission Denied"
-    echo "This operation requires root privileges. Please run this script as root:"
-    echo "sudo /opt/GitVoyager/uninstall-gitv.sh"
+
+if [ "$EUID" -eq 0 ]; then
+    echo -e "${RED}GitVoyager should do not installed or uninstalled as root${NC}"
+    echo -e "Exiting..."
     exit 1
 fi
 
 # Exit on error
 set -e
-
+INST_DIR="$HOME/GitVoyager/"
 # Perform uninstallation
-rm /etc/gitv.conf
-rm -fr /usr/local/bin/GitVoyager
+rm -fr "$INST_DIR"
 
 # Display uninstallation completion message
 echo "GitVoyager has been successfully uninstalled."
