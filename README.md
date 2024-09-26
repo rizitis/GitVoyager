@@ -61,19 +61,19 @@ If you command `gitv help` will print all you need<br>
 
  The gitv command lets you download any file or folder from github.
  First you must have a valid github personal access token.
- Then edit /home/omen/.local/bin/GitVoyager/gitv.conf and add you token.
+ Then edit /home/user/.local/bin/GitVoyager/gitv.conf and add you token.
  In gitv.conf also add github project name etc, as and the local dir path for download files.
 
 Usage: gitv <command> [<file>]
 Commands:
-  get <file_name>  - Download from github file_name to /home/omen/GitV_WORK.
+  get <file_name>  - Download from github file_name to /home/user/GitV_WORK.
   search <file_name>   - Search if file exist in remote and print info.
   list               - Print all contents of remote in a json file format.
   fetch               - This command create the first database and also update database if exist
   setup               - This command will open gitv.conf for edit, using your system default text editor
 
   help               - Display this help message
-  uninstall          - Uninstall gitv and delete all file but not /home/omen/GitV_WORK
+  uninstall          - Uninstall gitv and delete all file but not /home/user/GitV_WORK
 
 
 
