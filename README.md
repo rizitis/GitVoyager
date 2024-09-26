@@ -1,5 +1,5 @@
 # GitVoyager
-Is your personal git package manager. Explore your github repo  and download from cli any file or folder/subfolder without clone all repo localy.<br>
+Is your personal git package manager. Explore your github repo  and download from cli any file or folder/subfolder without clone all repo locally.<br>
 Only requirement in a Linux system is jq and and a personal github api access token.<br>
 
 ## Install
