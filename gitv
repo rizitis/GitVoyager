@@ -1,4 +1,5 @@
 #!/bin/bash
+cd GitVoyager || exit
 
 cd $(dirname $0) || exit
 CWD=$(pwd)
@@ -29,6 +30,7 @@ if [ "$EUID" -eq 0 ]; then
     echo -e "${RED}GitVoyager refuse to connect in web world with root privileges.${NC} Exiting."
     exit 1
 fi
+
 
 fetch () {
 bash fetch-voyager.sh

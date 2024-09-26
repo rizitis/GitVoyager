@@ -9,14 +9,14 @@ fi
 
 # Get the current directory name
 CURRENT_DIR=$(basename "$PWD")
-chmod 777 gitv get-voyager.sh fetch-voyager.sh uninstall-gitv.sh
+chmod +x gitv get-voyager.sh fetch-voyager.sh uninstall-gitv.sh
 
 # Change to the parent directory
 cd "$(pwd)/.."
 
 # Move the original directory to $HOME
 mv "$CURRENT_DIR" "$HOME"/.local/bin/GitVoyager
-
+cp "$HOME"/.local/bin/GitVoyager/gitv "$HOME"/.local/bin/
 echo "$CURRENT_DIR has been moved to "$HOME"/.local/bin"
 
 # Display ASCII art banner and installation success message

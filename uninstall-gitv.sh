@@ -16,7 +16,7 @@ CURRENT_DIR=$(basename "$PWD")
 cd "$(pwd)/.."
 
 # Move the original directory to $HOME
-rm -fr "$CURRENT_DIR"
+rm -fr "$CURRENT_DIR" gitv
 
 # Display uninstallation completion message
 echo "GitVoyager has been successfully uninstalled."
