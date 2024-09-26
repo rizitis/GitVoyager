@@ -77,6 +77,7 @@ help() {
     echo -e "  ${YELLOW}search <file_name>${NC}   - Search if file exist in remote and print info."
     echo -e "  ${YELLOW}list${NC}               - Print all contents of remote in a json file format."
     echo -e "  ${YELLOW}fetch${NC}               - This command create the first database and also update database if exist"
+    echo -e "  ${YELLOW}setup${NC}               - This command will open in your system text editor gitv.conf for edit"
     echo ""
     echo -e "  ${BLUE}help${NC}               - Display this help message"
     echo -e "  ${RED}uninstall          - Uninstall gitv and delete all file but not $LOC_DIR"
