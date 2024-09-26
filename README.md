@@ -1,5 +1,5 @@
 # GitVoyager
-Is your personal git package manager. Explore your github repo  and download from cli any file or folder/subfolder without clone all repo loccaly needed.<br>
+Is your personal git package manager. Explore your github repo  and download from cli any file or folder/subfolder without clone all repo locally.<br>
 Only requirement in a Linux system is jq and and a personal github api access token.<br>
 
 ## Install
@@ -41,7 +41,7 @@ LOC_DIR=
 ```
 
 3. Next step is the command `gitv fetch`<br>
-This will create the first database of your remote repo localy so gitv will now know where to search for remote files. This command also update database.<br>
+This will create the first database of your remote repo locally so gitv will now know where to search for remote files. This command also update database.<br>
 This is the end of setup.
 
 ## Usage
