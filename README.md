@@ -1,16 +1,17 @@
 # GitVoyager
-Is your personal git package manager. Explore your repo in github, and download any file or folder/subfolder without clone all repo loccaly.<br>
+Is your personal git package manager. Explore your github repo  and download from cli any file or folder/subfolder without clone all repo loccaly.<br>
 Only requirement in a Linux system is jq and and a personal github api access token.<br>
 
 ## Install
-If you exec `./install.sh` (no sudo , no root) will place GitVoyager in $HOME/.local/bin/<br>
+Just clone or download GitVoyager and command `bash install.sh` (no sudo , no root). That will place GitVoyager in $HOME/.local/bin/<br>
 
 ## SetUp
-0. All **GitVoyager** files must stay in the same folder but a copy of gitv will be in $HOME/.local/bin also (do not delete it).
-1. Create (if you dont have) a [github token.](https://github.com/settings/tokens)<br>
+0. If you used `install.sh` you are fine, else note that all **GitVoyager** files must stay in the same folder but a copy of the gitv script must be out of parrent folder. Example: `$PATH/{gitv,GitVoyager}`
+1. Create (if you dont have) a [github token.](https://github.com/settings/tokens) <br>
 Paste your token in plain.txt file and place file in a safe hidden dir of your system. Assume: `/home/user/.config/github_token.txt`<br>
-2. GitVoyager has a conf file stored in   `$HOME/.local/bin/GitVoyager/gitv.conf`
-After installation finish you must edit `gitv.conf`.<br>
+2. GitVoyager has a conf file stored in.   `$HOME/.local/bin/GitVoyager/gitv.conf`
+After installation finish you must edit `gitv.conf`. <br>
+Open it with a text editor or command: `gitv setup`
 
 ```
 #*************************************#
@@ -38,8 +39,9 @@ BRANCH=
 LOC_DIR=
 ```
 
-3. Next step is command `gitv fetch`<br>
-This will create the first database of your repo localy so gitv will now know where to search for remote files.
+3. Next step is the command `gitv fetch`<br>
+This will create the first database of your remote repo localy so gitv will now know where to search for remote files. This command also update database.<br>
+This is the end of setup.
 
 ## Usage
 If you command `gitv help` will print all you need<br>
@@ -70,8 +72,12 @@ fetch               - This command create the first database and also update dat
 help               - Display this help message
 uninstall          - Uninstall gitv and delete all file but not LOC_DIR
 ```
+
+examples:<br> `gitv get folder_name` <br> `gitv get file_name`
+
+
 ## Dont forget!
 1. Dont give permission to your token that not needed. You only need to read and download...
-2. GitVoyager is for personal use, interact only when you need with your projetcs. Its not a game...respect github API.
-3. Dont ran it as root.
+2. GitVoyager is for personal use, so interact only when needed with your projetcs. Its not a game...(respect github API).
+3. Dont ran gitv as root.
 4. This is personal work in progress, feel free to modify it for your needs ;)

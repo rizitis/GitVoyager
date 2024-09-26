@@ -2,7 +2,7 @@
 
 
 OUTPUT_JSON="repo_contents.json"  # Name of the output JSON file
-
+. ./gitv.conf
 # Function to read token from specified file
 read_token() {
     if [ -f "$TOKEN_FILE_PATH" ]; then

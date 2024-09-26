@@ -33,17 +33,17 @@ fi
 
 fetch () {
 bash fetch-voyager.sh
+wait
+cat repo_contents.json > "$LOC_DIR"/repo_contents.json
 }
 
 get () {
 local pkg="$1"
 mkdir -p "$LOC_DIR"
-cp repo_contents.json "$LOC_DIR"
 cd "$LOC_DIR" || exit 1
-source $CWD/get-voyager.sh "$pkg"
+bash $CWD/get-voyager.sh "$pkg"
 wait
-rm repo_contents.json
-ls -l
+find "$(pwd)"
 }
 
 search () {
