@@ -3,12 +3,13 @@ Is your personal git package manager. Explore your repo in github, and download 
 Only requirement in a Linux system is jq and and a personal github api access token.<br>
 
 ## Install
-`./install.sh` (no sudo , no root)
+If you exec `./install.sh` (no sudo , no root) will place GitVoyager in $HOME/.local/bin/<br>
 
 ## SetUp
+0. All **GitVoyager** files must stay in the same folder.
 1. Create (if you dont have) a [github token.](https://github.com/settings/tokens)<br>
-Paste your token in plain.txt file and place file in a safe hiden dir of your system. Assume: `/home/user/.config/github_token.txt`<br>
-2. GitVoyager has a conf file stored in   `"$HOME/GitVoyager/gitv.conf"`
+Paste your token in plain.txt file and place file in a safe hidden dir of your system. Assume: `/home/user/.config/github_token.txt`<br>
+2. GitVoyager has a conf file stored in   `$HOME/.local/bin/GitVoyager/gitv.conf`
 After installation finish you must edit `gitv.conf`.<br>
 
 ```
@@ -38,10 +39,10 @@ LOC_DIR=
 ```
 
 3. Next step is command `gitv fetch`<br>
-This will create the first database of your repo loacaly so gitv will know where to search for files remote.
+This will create the first database of your repo localy so gitv will now know where to search for remote files.
 
 ## Usage
-Command `gitv help` will print all you need<br>
+If you command `gitv help` will print all you need<br>
 ```
 
 _____ _ ___      __
@@ -56,7 +57,7 @@ _____ _ ___      __
 
 The gitv command lets you download any file or folder from github.
 First you must have a valid github personal access token.
-Then edit "$HOME/GitVoyager/gitv.conf" and add you token.
+Then edit "$HOME/.local/bin/GitVoyager/gitv.conf" and add you token.
 In gitv.conf also add github project name etc, as and the local dir path for download files.
 
 Usage: gitv <command> [<file>]
@@ -74,6 +75,3 @@ uninstall          - Uninstall gitv and delete all file but not LOC_DIR
 2. GitVoyager is for personal use, interact only when you need with your projetcs. Its not a game...respect github API.
 3. Dont ran it as root.
 4. This is personal work in progress, feel free to modify it for your needs ;)
-
-### SlackBuild
-It might be a SlackBuild [here](https://github.com/rizitis/One4All_SlackBuild) someday for Slackers. <br>

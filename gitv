@@ -23,7 +23,7 @@ RED='\033[0;31m'
     BLUE='\033[0;34m'
     NC='\033[0m'
 
-. /etc/gitv.conf
+. ./gitv.conf
 
 if [ "$EUID" -eq 0 ]; then
     echo -e "${RED}GitVoyager refuse to connect in web world with root privileges.${NC} Exiting."
@@ -39,7 +39,7 @@ local pkg="$1"
 mkdir -p "$LOC_DIR"
 cp repo_contents.json "$LOC_DIR"
 cd "$LOC_DIR" || exit 1
-bash $CWD/get-voyager.sh "$pkg"
+source $CWD/get-voyager.sh "$pkg"
 wait
 rm repo_contents.json
 ls -l
@@ -63,18 +63,18 @@ help() {
     echo -e ""
     echo -e "${BLUE} The gitv command lets you download any file or folder from github.${NC}"
     echo -e "${BLUE} First you must have a valid github personal access token.${NC}"
-    echo -e "${BLUE} Then edit "$HOME/GitVoyager/gitv.conf" and add you token.${NC}"
+    echo -e "${BLUE} Then edit "$HOME/.local/bin/GitVoyager/gitv.conf" and add you token.${NC}"
     echo -e "${BLUE} In gitv.conf also add github project name etc, as and the local dir path for download files.${NC}"
     echo ""
     echo -e "${GREEN}Usage: gitv <command> [<file>]${NC}"
     echo -e "${YELLOW}Commands:${NC}"
-    echo -e "  ${YELLOW}get <file_name>${NC}  - Download from github file_name to LOC_DIR."
+    echo -e "  ${YELLOW}get <file_name>${NC}  - Download from github file_name to $LOC_DIR."
     echo -e "  ${YELLOW}search <file_name>${NC}   - Search if file exist in remote and print info."
     echo -e "  ${YELLOW}list${NC}               - Print all contents of remote in a json file format."
     echo -e "  ${YELLOW}fetch${NC}               - This command create the first database and also update database if exist"
     echo ""
     echo -e "  ${BLUE}help${NC}               - Display this help message"
-    echo -e "  ${RED}uninstall          - Uninstall gitv and delete all file but not LOC_DIR"
+    echo -e "  ${RED}uninstall          - Uninstall gitv and delete all file but not $LOC_DIR"
     echo ""
     echo ""
 }

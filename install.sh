@@ -1,42 +1,23 @@
 #!/bin/bash
-
-# Navigate to the directory of the script and set current working directory
-cd $(dirname $0) || exit
-CWD=$(pwd)
+set -e
 
 if [ "$EUID" -eq 0 ]; then
-    echo -e "${RED}GitVoyager should do not installed as root${NC}"
+    echo -e "${RED}GitVoyager should not installed as root${NC}"
     echo -e "Exiting..."
     exit 1
 fi
 
-# Exit on error
-set -e
-INST_DIR="$HOME/GitVoyager/"
-mkdir -p "$INST_DIR"
-# Copy configuration file to /etc
-if cp "$CWD/gitv.conf" "$INST_DIR"; then
-    echo "Configuration file copied to /etc."
-else
-    echo "Error: Failed to copy configuration file."
-    exit 1
-fi
+# Get the current directory name
+CURRENT_DIR=$(basename "$PWD")
+chmod +x gitv get-voyager.sh fetch-voyager.sh uninstall-gitv.sh
 
-# Create directory for GitVoyager in /usr/local/bin/ and copy necessary files
-if mkdir -p ""$INST_DIR"" && cp "$CWD"/{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh} ""$INST_DIR""; then
-    echo "GitVoyager files copied to "$INST_DIR""
-else
-    echo "Error: Failed to copy GitVoyager files."
-    exit 1
-fi
+# Change to the parent directory
+cd "$(pwd)/.."
 
-# Set permissions for all files in the GitVoyager directory
-if chmod 777 ""$INST_DIR""{gitv,get-voyager.sh,fetch-voyager.sh,uninstall-gitv.sh}; then
-    echo "Permissions set for GitVoyager files."
-else
-    echo "Error: Failed to set file permissions."
-    exit 1
-fi
+# Move the original directory to $HOME
+mv "$CURRENT_DIR" "$HOME"/.local/bin
+
+echo "$CURRENT_DIR has been moved to "$HOME"/.local/bin"
 
 # Display ASCII art banner and installation success message
 cat << 'EOF'
@@ -55,5 +36,6 @@ EOF
 # Final success message
 echo ""
 echo -e "GitVoyager has been successfully installed."
+echo -e "$HOME"/.local/bin/$CURRENT_DIR"
 echo -e "To get started, use the command: gitv help"
 echo ""

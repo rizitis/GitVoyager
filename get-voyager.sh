@@ -3,9 +3,6 @@
 # Specify the name of the JSON file containing the repo contents
 INPUT_JSON="./repo_contents.json"
 
-# Specify the path to the token file
-TOKEN_FILE_PATH="$HOME/.config/.gpacman/github_token"
-
 # Get the specific file or directory name from the command line argument
 SPECIFIC_PATH="$1"
 
@@ -29,10 +26,10 @@ read_token() {
 download_file() {
     local file_path="$1"
     local target_path="$2"
-    
+
     echo "Downloading file: $file_path to $target_path"
-    FILE_URL="https://raw.githubusercontent.com/rizitis/One4All_SlackBuild/main/$file_path"
-    
+    FILE_URL="https://raw.githubusercontent.com/$REPO_OWNER/$REPO_NAME/$BRANCH/$file_path"
+
     if [ -n "$TOKEN" ]; then
         curl -H "Authorization: token $TOKEN" -L -o "$target_path" "$FILE_URL"
     else
@@ -73,7 +70,7 @@ download_directory() {
 # Function to download the specific file or directory from the JSON
 download_specific_path() {
     echo "Downloading the specific path: $SPECIFIC_PATH"
-    
+
     # Check if the path exists in the JSON
     local path_info=$(jq -r --arg path "$SPECIFIC_PATH" '.[] | select(.path == $path)' "$INPUT_JSON")
 
@@ -112,4 +109,3 @@ read_token
 download_specific_path
 
 echo "Download finished."
-
