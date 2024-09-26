@@ -24,13 +24,13 @@ GITV_PATH="$HOME/.local/bin/gitv"
 # Check if an old installation exists
 if [ -d "$INSTALL_PATH" ]; then
     echo -e "${RED}Warning: An existing installation of GitVoyager was found at $INSTALL_PATH.${NC}"
-    read -p "Would you like to (r)emove it or (q)uit it? (r/q): " action
+    read -p "Would you like to (r)emove it or (q)uit? (r/q): " action
     if [[ "$action" == "r" ]]; then
         echo -e "${GREEN}Removing old installation...${NC}"
         rm -rf "$INSTALL_PATH"
         echo -e "${GREEN}Old installation removed.${NC}"
     elif [[ "$action" == "q" ]]; then
-        echo -e "${GREEN}Quit installation...${NC}"
+        echo -e "${GREEN}Abort installation...${NC}"
         exit 0
     else
         echo -e "${RED}Invalid option. Exiting installation.${NC}"
@@ -64,7 +64,7 @@ echo -e "${GREEN}Made scripts executable.${NC}"
 # Change to the parent directory
 cd "$(pwd)/.."
 
-# Move the original directory to $HOME
+# Move the original directory to $HOME and rename it to GitVoyager
 if mv "$CURRENT_DIR" "$INSTALL_PATH"; then
     echo -e "${GREEN}Moved $CURRENT_DIR to $INSTALL_PATH.${NC}"
 else
@@ -99,5 +99,4 @@ echo ""
 echo -e "${GREEN}GitVoyager has been successfully installed.${NC}"
 echo -e "Installation Directory: $INSTALL_PATH"
 echo -e "To get started, use the command: gitv help"
-echo -e "README: https://github.com/rizitis/GitVoyager/blob/main/README.md"
 
