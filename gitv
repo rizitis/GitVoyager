@@ -1,7 +1,6 @@
 #!/bin/bash
-cd GitVoyager || exit
+cd $HOME/.local/bin/GitVoyager || exit
 
-cd $(dirname $0) || exit
 CWD=$(pwd)
 set -e
 
@@ -57,7 +56,7 @@ jq '.' repo_contents.json | less
 }
 
 uninstall () {
-sudo bash uninstall-gitv.sh
+bash uninstall-gitv.sh
 }
 
 help() {

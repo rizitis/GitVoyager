@@ -6,7 +6,7 @@ Only requirement in a Linux system is jq and and a personal github api access to
 If you exec `./install.sh` (no sudo , no root) will place GitVoyager in $HOME/.local/bin/<br>
 
 ## SetUp
-0. All **GitVoyager** files must stay in the same folder.
+0. All **GitVoyager** files must stay in the same folder but a copy of gitv will be in $HOME/.local/bin also (do not delete it).
 1. Create (if you dont have) a [github token.](https://github.com/settings/tokens)<br>
 Paste your token in plain.txt file and place file in a safe hidden dir of your system. Assume: `/home/user/.config/github_token.txt`<br>
 2. GitVoyager has a conf file stored in   `$HOME/.local/bin/GitVoyager/gitv.conf`
