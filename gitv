@@ -55,6 +55,10 @@ list () {
 jq '.' repo_contents.json | less
 }
 
+setup () {
+xdg-open "$HOME/.local/bin/GitVoyager/gitv.conf"
+}
+
 uninstall () {
 bash uninstall-gitv.sh
 }

@@ -36,5 +36,5 @@ EOF
 # Final success message
 echo ""
 echo -e "GitVoyager has been successfully installed."
-echo -e "$HOME/.local/bin/$CURRENT_DIR"
+echo -e "$HOME/.local/bin/"
 echo -e "To get started, use the command: gitv help"
