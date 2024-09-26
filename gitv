@@ -109,6 +109,7 @@ main() {
         search) search "$pkg" ;;
         list) list ;;
         fetch) fetch ;;
+        setup) setup ;;
         uninstall) uninstall ;;
         help) help ;;
         *) echo "Unknown command: $command"; help ;;
