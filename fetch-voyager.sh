@@ -69,5 +69,5 @@ sed -i '$ s/,$//' "$OUTPUT_JSON"
 # Close the JSON array
 echo "]" >> "$OUTPUT_JSON"
 
-echo "Repository contents saved to $OUTPUT_JSON."
+echo "https://github.com/$REPO_OWNER/$REPO_NAME Repository contents saved to $OUTPUT_JSON."
 
