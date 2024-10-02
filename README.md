@@ -108,7 +108,7 @@ examples:
     "path": "ffmpeg/ffmpeg.vulkan.diff.gz",
 
 ```
-<br> `gitv get ffpmeg` will download the ffmpeg folder with all files <br> `gitv get file_name`
+<br> `gitv get ffpmeg` will download the ffmpeg folder with all files <br> `gitv get ffmpeg.SlackBuild` will download only ffmpeg.SlackBuild. 
 
 
 ## Dont forget!
