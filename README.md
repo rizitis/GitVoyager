@@ -79,7 +79,36 @@ Commands:
 
 ```
 
-examples:<br> `gitv get folder_name` <br> `gitv get file_name`
+examples:
+<br> search for a string: `gitv list | grep ffmpeg`
+```
+
+    "name": "ffmpeg",
+    "path": "ffmpeg",
+    "path": "ffmpeg/FFmpeg-devel-v2-1-2-lavc-vaapi_decode-Make-it-possible-to-send-multiple-slice-params-buffers.patch.gz",
+    "path": "ffmpeg/FFmpeg-devel-v2-2-2-lavc-vaapi_av1-Avoid-sending-the-same-slice-buffer-multiple-times.patch.gz",
+    "path": "ffmpeg/add-av_stream_get_first_dts_for-chromium.patch.gz",
+    "name": "binary-ffmpeg-6.1.2",
+    "path": "ffmpeg/binary-ffmpeg-6.1.2",
+    "path": "ffmpeg/binary-ffmpeg-6.1.2/README",
+    "name": "ffmpeg-6.1.2-x86_64-1_rtz.tlz",
+    "path": "ffmpeg/binary-ffmpeg-6.1.2/ffmpeg-6.1.2-x86_64-1_rtz.tlz",
+    "name": "ffmpeg-6.1.2-x86_64-1_rtz.tlz.md5",
+    "path": "ffmpeg/binary-ffmpeg-6.1.2/ffmpeg-6.1.2-x86_64-1_rtz.tlz.md5",
+    "name": "ffmpeg-6.1.2-x86_64-1_rtz.tlz.sig",
+    "path": "ffmpeg/binary-ffmpeg-6.1.2/ffmpeg-6.1.2-x86_64-1_rtz.tlz.sig",
+    "name": "ffmpeg-6.1.2-x86_64-1_rtz.tlz.txt",
+    "path": "ffmpeg/binary-ffmpeg-6.1.2/ffmpeg-6.1.2-x86_64-1_rtz.tlz.txt",
+    "name": "makepkg-ffmpeg.log",
+    "path": "ffmpeg/binary-ffmpeg-6.1.2/makepkg-ffmpeg.log",
+    "path": "ffmpeg/build.log",
+    "name": "ffmpeg.SlackBuild",
+    "path": "ffmpeg/ffmpeg.SlackBuild",
+    "name": "ffmpeg.vulkan.diff.gz",
+    "path": "ffmpeg/ffmpeg.vulkan.diff.gz",
+
+```
+<br> `gitv get ffpmeg` will download the ffmpeg folder with all files <br> `gitv get file_name`
 
 
 ## Dont forget!
