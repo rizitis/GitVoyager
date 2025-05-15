@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  gitvoyager:
+    build: .
+    volumes:
+      - ./config:/config
+      - ./downloads:/downloads
+    stdin_open: true
+    tty: true
