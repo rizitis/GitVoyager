@@ -55,65 +55,6 @@ Last command will place GitVoyager in $HOME/.local/bin/ (Please make sure that i
 
 ---
 
-## Docker Support
-
-You can run GitVoyager in a Docker container for an isolated and lightweight setup. Follow these steps:
-
-> **DOCKER NOTE**:
->
-> If you prefer docker-compose, please read
->
-> [DOCKER_COMPOSE_USAGE_Version3.md](./DOCKER_COMPOSE_USAGE_Version3.md)
-
-
-### Step 1: 
-In the terminal, navigate to the GitVoyager project directory.
-
-### Step 2: Build the Docker Image
-Run:
-```bash
-docker build -t gitvoyager .
-```
-
-### Step 3: Create Configuration and Download Directories
-Create directories on your local machine for the configuration file and downloaded files:
-```bash
-mkdir -p $(pwd)/config
-mkdir -p $(pwd)/downloads
-```
-
-### Step 4: Edit the Configuration File
-Create a `gitv.conf` file in the `config` directory and add your GitHub token and repository details:
-```bash
-nano $(pwd)/config/gitv.conf
-```
-Add the following content (replace placeholders with your details):
-```
-TOKEN_FILE_PATH="/config/github_token.txt"
-REPO_OWNER="your-github-username"
-REPO_NAME="target-repo-name"
-BRANCH="main"
-LOC_DIR="/downloads"
-```
-
-### Step 5: Run the Docker Container
-Run the container, mounting the configuration and downloads directories:
-```bash
-docker run --rm -it \
-    -v $(pwd)/config:/config \
-    -v $(pwd)/downloads:/downloads \
-    gitvoyager
-```
-
-### Step 6: Use GitVoyager
-Inside the container, you can now use all the `gitv` commands (e.g., `fetch`, `list`, `get`).
-
-### Step 7: Persist Downloads
-All downloaded files will be saved to your local `downloads` directory, as it’s mounted to `/downloads` in the container.
-
- 
----
-
 ## Usage
 
 - **Fetch Initial Data**:
@@ -182,6 +123,65 @@ Commands:
   uninstall          - Uninstall gitv and delete all file but not /home/user/GitV_WORK
 ```
 
+---
+
+## Docker Support
+
+You can run GitVoyager in a Docker container for an isolated and lightweight setup. Follow these steps:
+
+> **DOCKER NOTE**:
+>
+> If you prefer docker-compose, please read
+>
+> [DOCKER_COMPOSE_USAGE_Version3.md](./DOCKER_COMPOSE_USAGE_Version3.md)
+
+
+### Step 1: 
+In the terminal, navigate to the GitVoyager project directory.
+
+### Step 2: Build the Docker Image
+Run:
+```bash
+docker build -t gitvoyager .
+```
+
+### Step 3: Create Configuration and Download Directories
+Create directories on your local machine for the configuration file and downloaded files:
+```bash
+mkdir -p $(pwd)/config
+mkdir -p $(pwd)/downloads
+```
+
+### Step 4: Edit the Configuration File
+Create a `gitv.conf` file in the `config` directory and add your GitHub token and repository details:
+```bash
+nano $(pwd)/config/gitv.conf
+```
+Add the following content (replace placeholders with your details):
+```
+TOKEN_FILE_PATH="/config/github_token.txt"
+REPO_OWNER="your-github-username"
+REPO_NAME="target-repo-name"
+BRANCH="main"
+LOC_DIR="/downloads"
+```
+
+### Step 5: Run the Docker Container
+Run the container, mounting the configuration and downloads directories:
+```bash
+docker run --rm -it \
+    -v $(pwd)/config:/config \
+    -v $(pwd)/downloads:/downloads \
+    gitvoyager
+```
+
+### Step 6: Use GitVoyager
+Inside the container, you can now use all the `gitv` commands (e.g., `fetch`, `list`, `get`).
+
+### Step 7: Persist Downloads
+All downloaded files will be saved to your local `downloads` directory, as it’s mounted to `/downloads` in the container.
+
+ 
 ---
 
 ## Notes
