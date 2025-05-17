@@ -127,6 +127,8 @@ Commands:
 
 ## Docker Support
 
+**NOTE: DOCKER SUPPORT IS IN Alpha stage still in Developer status!!!** <br>
+
 You can run GitVoyager in a Docker container for an isolated and lightweight setup. Follow these steps:
 
 > **DOCKER NOTE**:
